@@ -1,0 +1,44 @@
+{
+  "zip": "C:\\Users\\WinPro\\Downloads\\Nova-Apex_Kritische-Auswertung_mit-Quellen.zip",
+  "zipSha256": "89bc10e1879fbd9588f6dfa6daf05766b20102e0a79a386ab3ab5368d151875a",
+  "exports": {
+    "agentic_systems": {
+      "groups": 440,
+      "jsonBytes": 584893,
+      "gzipBytes": 121319,
+      "sha256": "a7309eca31a204a5e9ccbd8f1bfd4fe305e98cb5064ccbdf34f2a1de078ad833"
+    },
+    "kernel": {
+      "groups": 264,
+      "jsonBytes": 368644,
+      "gzipBytes": 84030,
+      "sha256": "2926ec089234cad1f6efcb2027d80ad1e7057a13ccf3425e9679cd9376f87adf"
+    },
+    "local_models": {
+      "groups": 434,
+      "jsonBytes": 582037,
+      "gzipBytes": 125843,
+      "sha256": "63f522762af5c0d79b6ae320c639ab8ada8b73efdc77b966a903517747135fc8",
+      "gzipSha256": "f52962958fd890ae246397cea57b5bd184dc762a62230a85c8ad3c871f3b6294",
+      "note": "regenerated from original ZIP analysis after detecting CRC/transfer corruption"
+    },
+    "kv_cache": {
+      "groups": 54,
+      "jsonBytes": 78311,
+      "gzipBytes": 15870,
+      "sha256": "5e2d268e50772e894078cfefeaa5298a2959e98c24508e01f7e5e45e872a1139"
+    },
+    "layerstreaming": {
+      "groups": 348,
+      "jsonBytes": 465865,
+      "gzipBytes": 96915,
+      "sha256": "b1467b6abe843277dd6931ca82dca32f7812adcb73aa5348ad0560342b82da0c"
+    },
+    "evolution": {
+      "groups": 183,
+      "jsonBytes": 278953,
+      "gzipBytes": 68686,
+      "sha256": "1984bd150f0fadb5094297913d22b10feca4fb71a207a39eb769d8dc2be4f3d6"
+    }
+  }
+}

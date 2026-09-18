@@ -1,0 +1,14 @@
+name: Websuche
+version: "2.0"
+beschreibung: "Websuche via DuckDuckGo"
+hooks:
+  - name: on_message
+    threshold: 0.74
+    beispiele:
+      - "Suche im Internet nach Python Tutorials"
+      - "Was ist der aktuelle Stand von OpenAI?"
+      - "Google nach den neuesten KI-Nachrichten"
+      - "Finde Informationen über Machine Learning"
+      - "Aktuelle Nachrichten zu Rust Programming"
+      - "Suche nach Rezepten für Pasta Carbonara"
+      - "Was ist neu bei Python 3.14?"

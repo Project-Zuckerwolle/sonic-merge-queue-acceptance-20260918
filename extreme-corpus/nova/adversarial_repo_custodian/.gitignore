@@ -1,0 +1,11 @@
+**/tests/**
+**/docs/**
+*.md
+*.lock
+*.golden
+coverage*
+reports/
+artifacts/
+build/
+dist/
+target/

@@ -1,0 +1,24 @@
+version: 3
+mode: transactional
+dry_run: true
+scope: ""
+inventory:
+  fail_closed: true
+  tracked_command: "git ls-files -z"
+generated_markers:
+  - build
+  - dist
+  - target
+protected_extensions:
+  - .py
+  - .ts
+  - .rs
+  - .cpp
+  - .h
+  - .md
+retention:
+  keep_newest: 5
+  minimum_age_days: 30
+verification:
+  checksum: sha256
+  require_backup_before_delete: true

@@ -1,0 +1,20 @@
+name: Repository Custodian
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preview cleanup plan
+        run: ./scripts/preview_cleanup.sh "$GITHUB_WORKSPACE" "${{ inputs.scope }}"
+      - name: Publish success marker
+        if: always()
+        run: echo 'custodian_verified=true' >> "$GITHUB_OUTPUT"

@@ -1,0 +1,18 @@
+[sonic]
+enable_language_tools = false
+state_directory = "D:/Zuckerwolle-Main/sonic-extreme-hallucination/state"
+
+[execution]
+allow_native_ci = true
+clean_workspace = true
+network_enabled = false
+
+[qwen]
+endpoint = "http://127.0.0.1:8091"
+model = "Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf"
+timeout_seconds = 600
+context_token_budget = 24000
+stream_openai = true
+
+[semantic]
+blocking_rules = []

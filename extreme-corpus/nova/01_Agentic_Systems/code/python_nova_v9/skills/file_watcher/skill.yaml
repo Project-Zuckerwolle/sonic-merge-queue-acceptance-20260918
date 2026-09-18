@@ -1,0 +1,16 @@
+name: FileWatcher
+version: "1.0"
+beschreibung: "Workspace-Änderungen überwachen und melden"
+hooks:
+  - name: on_startup
+  - name: on_message
+    threshold: 0.74
+    beispiele:
+      - "Überwache den Workspace auf neue Dateien"
+      - "Benachrichtige mich bei neuen Dateien"
+      - "Was hat sich im Workspace verändert?"
+      - "Zeig mir neue Dateien seit gestern"
+      - "Welche Dateien wurden zuletzt geändert?"
+config_defaults:
+  workspace_pfad: "./workspace"
+  max_anzeige: 10

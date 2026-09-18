@@ -1,0 +1,15 @@
+name: CodeSandbox
+version: "2.0"
+beschreibung: "Python-Code isoliert ausführen"
+hooks:
+  - name: on_message
+    threshold: 0.74
+    beispiele:
+      - "Führe diesen Python-Code aus"
+      - "Berechne das mit Python"
+      - "Kannst du dieses Skript ausführen?"
+      - "Teste diesen Code"
+      - "Rechne mit numpy aus"
+      - "Zeig mir das Ergebnis von diesem Code"
+config_defaults:
+  timeout: 30

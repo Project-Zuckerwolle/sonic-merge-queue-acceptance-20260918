@@ -1,0 +1,205 @@
+001: KRITISCHE MECHANISCHE AUSWERTUNG
+002: Nova und Apex
+003: Agentic Systems, Kernel, lokale Modelle, KV-Cache, Layerstreaming und Evolution
+004: Gesamturteil
+005: Nova/Apex enthält einen brauchbaren Kern, ist in den Claude-Daten aber deutlich weiter entwickelt dargestellt, als belastbar nachgewiesen wird.
+006: Das Hauptproblem ist nicht eine einzelne schlechte Idee, sondern die gleichzeitige Stapelung sehr vieler Forschungs- und Infrastrukturprojekte:
+007: eigener Inferenz-Kernel
+008: eigenes Modellformat .nv4
+009: INT2/INT4-Kompression
+010: TurboQuant/PolarQuant
+011: KV-Cache-Verdrängung
+012: Layerstreaming
+013: Speculative Decoding/Medusa
+014: mehrere lokale Modelle
+015: persistente Agenten
+016: Selbstverbesserung und Training
+017: Jede dieser Komponenten wäre allein bereits ein größeres Projekt. Zusammengenommen entsteht eine Architektur, deren Teile in Claude-Texten häufig als „fertig“ bezeichnet werden, obwohl dieselben Texte sie später als fehlend, neu zu erstellen oder falsch implementiert aufführen.
+018: Wichtig: Ich habe den Claude-Export ausgewertet, nicht einen aktuellen Nova/Apex-Quellcode kompiliert. „Implementiert“ bedeutet daher zunächst nur: Claude behauptet eine Implementierung.
+019: Mechanisches Ergebnis
+020: Ausgewertet wurden 163 Gespräche und sieben Projektdateien mit insgesamt 83 eingebetteten Dokumenten.
+021: Die Extraktion ergab:
+022: 16.613 relevante Texttreffer
+023: 7.713 deduplizierte Merkmalsgruppen
+024: 1.568 behauptete Implementierungen
+025: 662 Planungen
+026: 181 verworfene oder später korrigierte Ansätze
+027: 484 Implementierungsbehauptungen ohne erkennbaren Nachweis
+028: nur 244 Gruppen mit einem mechanischen Vertrauenswert von mindestens 60/100
+029: 6.457 Gruppen unter 40/100
+030: Die Kategorien überschneiden sich:
+031: Bereich
+032: Treffer
+033: Gruppen
+034: behauptet implementiert
+035: Agentic Systems
+036: 6.979
+037: 2.897
+038: 727
+039: Kernel
+040: 4.486
+041: 2.262
+042: 609
+043: Local Models
+044: 6.297
+045: 2.926
+046: 681
+047: KV-Cache
+048: 984
+049: 407
+050: 83
+051: Layerstreaming
+052: 5.311
+053: 2.418
+054: 517
+055: Evolution
+056: 1.825
+057: 911
+058: 282
+059: Die hohe Menge ist größtenteils Wiederholung, Codeentwurf, Wunscharchitektur und Claude-Selbstbestätigung. Sie ist kein Beleg für entsprechenden Funktionsumfang.
+060: Rekonstruierte Designentwicklung
+061: Nova v1/v2Python/Ollama-basierter Assistent mit schwachem Gedächtnis.
+062: Nova3Wechsel zu C++20 und eigener lokaler Infrastruktur. In den Dokumenten ausdrücklich als unvollständig bezeichnet.
+063: Nova4Windows-native Architektur mit Modellstreaming, Gedächtnis, Brain/Wiki, Dreaming und eigener Inferenz. Mehrfach als „vollständig“ bezeichnet.
+064: KorrekturphaseSpätere Dokumente erklären wesentliche Nova4-Bestandteile für fehlend oder falsch:
+065: angebliches SSD→VRAM-Streaming war tatsächlich DRAM→VRAM
+066: der angebliche ReAct-Loop war eher ein JSON-DAG-Dispatcher
+067: apex_orchestrator fehlte
+068: resource_monitor fehlte
+069: model_store fehlte
+070: Task-Manager und Resume-Verhalten waren unklar
+071: Apex-AusbauGeplant werden ein 14B-Orchestrator, mehrere 3B-Subagenten, persistente Aufgaben, ReAct, Reflection, Replanning, HIP-Kernel, KV-Manager und Layerstreamer.
+072: Das ist überwiegend eine Evolution der Dokumentation und Zielarchitektur. Eine nachgewiesene technische Evolution des tatsächlich laufenden Systems lässt sich daraus nicht ableiten.
+073: Agentic Systems
+074: Wertvolle Features
+075: Der beste Teil des Apex-Entwurfs ist der begrenzte Agentenzyklus:
+076: THOUGHT → ACTION → OBSERVATION
+077: Neuplanung erst nach drei aufeinanderfolgenden Fehlern
+078: höchstens zwei Replan-Versuche pro Aufgabe
+079: Reflection nach jeweils fünf Iterationen
+080: definierte Abbruchbedingungen
+081: persistente Aufgaben mit Wiederaufnahme
+082: native C++-Werkzeuge statt beliebiger Shell-Ausführung
+083: abgestufte Berechtigungen:
+084: Lesen und ungefährliche APIs
+085: lokale Schreibvorgänge
+086: Shell, Energieverwaltung und kritische Aktionen nur nach Bestätigung
+087: Workspace-Begrenzung für Dateizugriffe
+088: Das ist als Zustandsmaschine sinnvoll und deutlich realistischer als ein „autonomer Superagent“.
+089: Kritische Punkte
+090: „Multi-Agent“ wird teilweise zu großzügig verwendet. Vieles beschreibt lediglich:
+091: ein großes Modell plant,
+092: mehrere kleine Modelle bearbeiten Teilprompts,
+093: ein Orchestrator sammelt die Ergebnisse.
+094: Das ist parallele Aufgabenzerlegung, aber noch kein robustes Multi-Agent-System. Es fehlen belastbare Definitionen für:
+095: Zustandsbesitz und Konfliktauflösung
+096: idempotente Werkzeugaufrufe
+097: Wiederholung nach Abstürzen
+098: konkurrierende Dateizugriffe
+099: Geheimnis- und Rechteisolation
+100: überprüfbare Übergaben zwischen Agenten
+101: Schutz vor Prompt-Injection aus Dateien und Tool-Ausgaben
+102: reproduzierbare Agenten-Evaluationen
+103: Recyclingwert: hoch, wenn Apex zunächst als begrenzter, persistenter Workflow-Controller gebaut wird. Niedrig, wenn sofort vier autonome Subagenten mit Shell- und Dateirechten gestartet werden.
+104: Kernel und lokale Modelle
+105: Geplant beziehungsweise behauptet werden:
+106: C++20
+107: HIP statt CUDA
+108: eigene Forward-Pass-Kernel
+109: .nv4-Modellformat
+110: GGUF-Konverter
+111: INT2/INT4-Gewichte
+112: Zstd-Kompression
+113: Triple-/Ring-Buffer
+114: asynchrones Prefetching
+115: CRC-Prüfung
+116: VRAM-Monitoring
+117: harte Reserve von etwa 500 MB
+118: Gemma als Haupt-/Draft-Modell
+119: Ministral 14B als Apex-Planer
+120: Ministral 3B als Subagent
+121: Die Rollenaufteilung ist vernünftig: großes Planungsmodell, kleine Ausführungsmodelle, separates Draft-Modell.
+122: Die konkrete Modellliste ist aber inkonsistent. „Gemma 4 E27B“ taucht häufig auf, existiert unter dieser offiziellen Bezeichnung jedoch nicht. Google nennt E2B, E4B, 12B, 26B-MoE und 31B Dense. Vermutlich wurden „26B MoE“ und „27B“ aus einer anderen Gemma-Generation vermischt. Google: Gemma 4
+123: Ministral 3 14B und 3B sind dagegen offiziell dokumentierte lokale Modelle mit bis zu 256K Kontext. Das beweist ihre Existenz, nicht die behauptete Apex-Geschwindigkeit oder Speicherbelegung. Mistral: Ministral 3 14B
+124: Ein weiteres Risiko ist Windows/HIP: AMD unterstützt HIP unter Windows, bezeichnet das Windows SDK aber als Teilmenge von ROCm; zudem sind nicht alle HIP-Runtime-Funktionen verfügbar. „CUDA-Dateien mechanisch nach HIP portieren“ ist daher kein belastbarer Implementierungsplan. AMD HIP FAQ, ROCm unter Windows
+125: KV-Cache
+126: Der Entwurf kombiniert:
+127: getrennte KV-Budgets von ungefähr 1 bis 3 GB
+128: TurboQuant/PolarQuant
+129: H2O als Rückfalllösung
+130: gekürzte Subagenten-Caches
+131: Kontextziele um 100K
+132: rechnerische Maxima von 302K bis 947K Token
+133: TurboQuant/PolarQuant und H2O sind reale Forschungsansätze. TurboQuant beschreibt aggressive Cache-Kompression; H2O behält insbesondere aktuelle und als wichtig bewertete „Heavy-Hitter“-Token. Das macht sie aber nicht zu einer fertigen, modellunabhängigen HIP-Komponente. Google Research: TurboQuant, PolarQuant, H2O
+134: Die wiederholte Zahl von ungefähr 3,1 KB KV-Speicher pro Token ist ohne exakte Angaben zu Layerzahl, KV-Heads, Head-Dimension, Datentyp, Gruppenbildung und Padding nicht belastbar. Ebenso ignorieren die hochgerechneten Kontextmaxima:
+135: temporäre Attention-Workspaces
+136: Quantisierungsmetadaten
+137: Speicherfragmentierung
+138: mehrere gleichzeitig aktive Sequenzen
+139: Aktivierungen und Modellzustand
+140: Qualitätseinbußen durch Cache-Eviction
+141: Recyclingwert: KV-Cache als austauschbares Backend behalten. Zunächst eine bekannte FP16/Q8/Q4-Baseline messen; TurboQuant und H2O erst danach hinter Evaluationstests ergänzen.
+142: Layerstreaming
+143: Die beste Version des Entwurfs lautet:
+144: Model Store → RAM-Cache → Layerstreamer → Ring Buffer → GPU                         ↑                  Resource Monitor
+145: Positiv sind:
+146: klare Trennung der Komponenten
+147: Prefetching
+148: Prüfsummen
+149: Speicherreserve
+150: Pausieren bei VRAM-Druck
+151: Telemetrie für Cache-Hits und Wartezeiten
+152: Korrektur von SSD→VRAM zu DRAM→VRAM
+153: Der fundamentale Widerspruch bleibt:
+154: Einerseits sollen Modellgewichte „niemals vollständig im VRAM“ liegen.
+155: Andererseits wird das 14B-Modell mit etwa 7 GB permanentem VRAM beschrieben.
+156: Gleichzeitig soll das Gesamtsystem eine harte 7-GB-Grenze einhalten.
+157: Diese Aussagen können nicht gleichzeitig stimmen.
+158: Layerstreaming pro Token kann außerdem extrem bandbreitengebunden sein. Aus „NVMe 7 GB/s“ oder „RAM 16 GB/s“ folgen keine 7–18 Token/s. Dafür müssen mindestens Transfermenge pro Token, PCIe-Überlappung, Dekompressionszeit, Kernel-Laufzeit, Synchronisationspausen und Cache-Trefferrate gemessen werden.
+159: Recyclingwert: als optionaler Offload-Modus hoch. Als universelle Grundlage sämtlicher Inferenz zunächst zu riskant.
+160: „Evolution“ und Selbstverbesserung
+161: Verwertbar sind:
+162: unveränderliche Rohprotokolle
+163: versionierte Zusammenfassungen
+164: Episodengedächtnis
+165: Brain/Wiki-Compiler
+166: Evaluation vor Übernahme neuer Erkenntnisse
+167: Rollback auf frühere Zustände
+168: Problematisch sind „Dreaming“, nächtliches Training und automatische Selbstverbesserung, sofern keine festen Grenzen existieren. Es fehlen:
+169: kuratierte Trainingsdatensätze
+170: Trennung zwischen Nutzertext und vertrauenswürdigen Lernsignalen
+171: Regressionstests
+172: Modell- und Datensatzregister
+173: Freigabeschwellen
+174: Rollback
+175: Schutz vor schleichender Persona- oder Verhaltensänderung
+176: Evolution sollte deshalb zunächst Versionierung von Artefakten bedeuten, nicht selbstständige Veränderung des laufenden Modells oder Quellcodes.
+177: Empfohlene Zielarchitektur
+178: Behalten
+179: Ein lokales Hauptmodell und zunächst nur ein kleines Hilfsmodell.
+180: Apex als begrenzte persistente Zustandsmaschine.
+181: Berechtigungsstufen und Workspace-Sandbox.
+182: Model Store, Resource Monitor und messbare Speicherbudgets.
+183: Austauschbares KV-Cache-Backend.
+184: Layerstreaming nur als optionaler Modus.
+185: Unveränderliche Logs, versionierte Erinnerungen und Rollback.
+186: Benchmarks für Qualität, Geschwindigkeit, Speicher und Fehlerverhalten.
+187: Zurückstellen
+188: eigenes Modellformat, eigener Kernel und eigene Quantisierung gleichzeitig
+189: vier parallele 3B-Agenten auf einer Gaming-GPU
+190: standardmäßig 100K+ Kontext
+191: automatisches Training aus Gesprächen
+192: selbstständige Codeänderungen
+193: Medusa, TurboQuant und Layerstreaming in derselben ersten Ausbaustufe
+194: automatische Lösch- oder Shell-Aktionen
+195: Schlussbewertung
+196: Nova/Apex ist keine wertlose Claude-Fantasie. Es enthält mehrere gute Architekturbausteine: begrenztes ReAct, persistente Aufgaben, Berechtigungsstufen, Rollenmodelle, Resource Monitoring und versioniertes Gedächtnis.
+197: Claude hat aber Entwurf, Zielzustand und tatsächliche Implementierung systematisch ineinander geschoben. Die stärksten Warnzeichen sind:
+198: „Nova4 vollständig“ versus später ausdrücklich fehlende Kernkomponenten
+199: falsche oder vermischte Modellbezeichnungen
+200: widersprüchliche VRAM-Budgets
+201: „nie vollständig im VRAM“ versus permanentes 7-GB-Modell
+202: theoretische KV-Maxima als praktische Kapazitäten
+203: Zielwerte für Token/s ohne Benchmarkprotokolle
+204: CUDA→HIP-Portierung als vermeintlich mechanischer Schritt
+205: Der recyclingfähige Kern ist ein kontrollierter lokaler Agenten-Controller. Der große eigene Inferenz-Stack sollte als separates Forschungsprojekt behandelt werden – nicht als bereits funktionierendes Fundament von Apex.

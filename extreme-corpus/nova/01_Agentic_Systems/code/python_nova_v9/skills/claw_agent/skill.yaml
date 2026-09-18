@@ -1,0 +1,16 @@
+name: ClawAgent
+version: "2.0"
+beschreibung: "Autonomer Coding-Agent (Claw binary)"
+hooks:
+  - name: on_message
+    threshold: 0.74
+    beispiele:
+      - "Baue mir eine Python-Anwendung"
+      - "Entwickle ein komplettes Projekt"
+      - "Schreibe automatisch Code für"
+      - "Erstelle eine vollständige App"
+      - "Agent soll das Programm schreiben"
+      - "Implementiere das komplette Feature"
+config_defaults:
+  binary_pfad: ""
+  workspace_pfad: "./workspace"

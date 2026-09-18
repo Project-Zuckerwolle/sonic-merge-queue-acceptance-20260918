@@ -1,0 +1,43 @@
+QUELLENINDEX - NOVA / APEX
+Stand: 24.08.2026
+
+01_Google_Gemma-4.html
+Original: https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/
+Belegt: Offizielle Gemma-4-Modellfamilie. Genannt werden E2B, E4B, 12B,
+26B-MoE und 31B Dense; keine offizielle Modellbezeichnung "Gemma 4 E27B".
+
+02_Mistral_Ministral-3-14B.html
+Original: https://docs.mistral.ai/models/ministral-3-14b-25-12
+Belegt: Existenz, Modellbezeichnung und offizieller Kontextumfang von
+Ministral 3 14B. Keine Bestätigung der in Apex behaupteten Geschwindigkeit.
+
+03_AMD_HIP-FAQ.html
+Original: https://rocm.docs.amd.com/projects/HIP/en/develop/faq.html
+Belegt: HIP-Unterstützung auf Windows und Einschränkungen der Runtime-Funktionen.
+
+04_AMD_ROCm-Windows.html
+Original: https://rocm.docs.amd.com/projects/install-on-windows/en/latest/index.html
+Belegt: Das HIP SDK für Windows ist nur eine Teilmenge von ROCm.
+
+05_Google-Research_TurboQuant.html
+Original: https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/
+Belegt: TurboQuant/PolarQuant als Forschungsansatz zur starken Kompression.
+Belegt nicht: eine fertige, modellunabhängige HIP-Implementierung für Apex.
+
+06_PolarQuant_Paper.pdf
+Original: https://arxiv.org/abs/2502.02617
+Belegt: Primärpaper zu PolarQuant und quantisiertem KV-Cache.
+
+07_H2O_Paper.pdf
+Original: https://arxiv.org/abs/2306.14048
+Belegt: H2O-Cache-Eviction mit aktuellen und Heavy-Hitter-Token.
+
+Analysegrundlage
+================
+
+Die Dateien im Ordner Analysegrundlage wurden mechanisch aus dem vorhandenen
+Claude-Export erzeugt. Die vollständigen Rohgespräche sind aus Datenschutz- und
+Paketgrößengründen nicht dupliziert. Das JSON enthält die relevanten Treffer,
+Gruppen, Statusheuristiken, Widersprüche und Vertrauenswerte; das Skript macht
+die Extraktionslogik nachvollziehbar.
+
