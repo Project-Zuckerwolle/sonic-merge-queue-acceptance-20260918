@@ -1,0 +1,48 @@
+name: Sonic Push
+
+on:
+  push:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sonic-${{ github.repository }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  required:
+    name: Sonic / required
+    runs-on: [self-hosted, sonic, test-only]
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Run Sonic and publish bounded safe fixes (isolated Linux worker)
+        if: runner.os != 'Windows'
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SONIC_STATE_DB: ${{ runner.temp }}/sonic-state.db
+        run: |
+          export GIT_CONFIG_COUNT=1
+          export GIT_CONFIG_KEY_0=http.https://github.com/.extraheader
+          export GIT_CONFIG_VALUE_0="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
+          /opt/sonic/venv/bin/sonic ci --repo . --head "${{ github.sha }}" --apply-safe --publish-safe-fixes --emit-controller-envelope
+      - name: Run Sonic and publish bounded safe fixes (explicitly trusted Windows worker)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SONIC_STATE_DB: ${{ runner.temp }}/sonic-state.db
+        run: |
+          if (-not $env:SONIC_PYTHON) {
+            throw "SONIC_PYTHON must be injected for an explicitly trusted native worker"
+          }
+          $bytes = [Text.Encoding]::ASCII.GetBytes("x-access-token:$env:GITHUB_TOKEN")
+          $env:GIT_CONFIG_COUNT = '1'
+          $env:GIT_CONFIG_KEY_0 = 'http.https://github.com/.extraheader'
+          $env:GIT_CONFIG_VALUE_0 = "AUTHORIZATION: basic $([Convert]::ToBase64String($bytes))"
+          $sonic = Join-Path (Split-Path $env:SONIC_PYTHON) 'sonic.exe'
+          & $sonic ci --repo . --head "${{ github.sha }}" --apply-safe --publish-safe-fixes --emit-controller-envelope

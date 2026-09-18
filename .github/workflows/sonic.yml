@@ -1,0 +1,45 @@
+name: Sonic
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  merge_group:
+    types: [checks_requested]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sonic-${{ github.repository }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  required:
+    name: Sonic / required
+    runs-on: [self-hosted, sonic, test-only]
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Run Sonic (isolated Linux worker)
+        if: runner.os != 'Windows'
+        shell: bash
+        env:
+          SONIC_STATE_DB: ${{ runner.temp }}/sonic-state.db
+        run: |
+          /opt/sonic/venv/bin/sonic ci --repo . --head "${{ github.sha }}" --emit-controller-envelope
+      - name: Run Sonic (explicitly trusted Windows worker)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        env:
+          SONIC_STATE_DB: ${{ runner.temp }}/sonic-state.db
+        run: |
+          if (-not $env:SONIC_PYTHON) {
+            throw "SONIC_PYTHON must be injected for an explicitly trusted native worker"
+          }
+          $sonic = Join-Path (Split-Path $env:SONIC_PYTHON) 'sonic.exe'
+          & $sonic ci --repo . --head "${{ github.sha }}" --emit-controller-envelope
