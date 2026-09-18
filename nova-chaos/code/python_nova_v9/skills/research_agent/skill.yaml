@@ -1,0 +1,16 @@
+name: ResearchAgent
+version: "1.0"
+beschreibung: "Tiefe Recherche: Websuche + Brain + LLM-Synthese"
+hooks:
+  - name: on_message
+    threshold: 0.74
+    beispiele:
+      - "Recherchiere ausführlich über Machine Learning"
+      - "Erstelle einen Bericht über Python 3.14"
+      - "Analysiere das Thema Quantencomputing"
+      - "Fasse alle Infos über Rust zusammen"
+      - "Untersuche die Vor- und Nachteile von FastAPI"
+      - "Erstelle eine Übersicht zu LLM-Architekturen"
+config_defaults:
+  max_quellen: 3
+  ins_brain_schreiben: true

@@ -1,0 +1,16 @@
+name: Wetter
+version: "2.0"
+beschreibung: "Aktuelles Wetter via wttr.in"
+hooks:
+  - name: on_message
+    threshold: 0.74
+    beispiele:
+      - "Wie ist das Wetter heute?"
+      - "Wird es morgen regnen?"
+      - "Wie warm ist es draußen?"
+      - "Wetter in Berlin"
+      - "Brauche ich heute einen Regenschirm?"
+      - "Temperatur heute"
+      - "Wettervorhersage für die Woche"
+config_defaults:
+  wttr_query: "Berlin"

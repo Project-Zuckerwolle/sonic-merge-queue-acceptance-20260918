@@ -1,0 +1,14 @@
+name: GitHub
+version: "2.0"
+beschreibung: "Git-Operationen und GitHub Push"
+hooks:
+  - name: on_message
+    threshold: 0.74
+    beispiele:
+      - "Committe meine Änderungen"
+      - "Push das Projekt zu GitHub"
+      - "Git status anzeigen"
+      - "Erstelle einen Git-Commit"
+      - "Lade den Code auf GitHub hoch"
+config_defaults:
+  workspace_pfad: "./workspace"

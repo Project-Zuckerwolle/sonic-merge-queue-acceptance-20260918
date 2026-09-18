@@ -1,0 +1,187 @@
+﻿Internal ctest changing into directory: D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build
+UpdateCTestConfiguration  from :D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build/DartConfiguration.tcl
+UpdateCTestConfiguration  from :D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build/DartConfiguration.tcl
+Test project D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 13
+    Start 13: Testbed12_Tool
+
+13: Test command: D:\Nova_Recycling_Bundle_2026-08-24\_global_results\nova4_sandbox\build\Release\testbed12.exe
+13: Working Directory: D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build
+13: Test timeout computed to be: 45
+13: === Testbed 12: Normal-Tool im Chat ===
+13:   Chat-Ausgabe: Das Ergebnis ist 2+3*4 = 14 ÔÇö fertig.
+13:   Tool-Event gesehen     = ja
+13:   Best├ñtigungen (Tier 1) = 0 (erwartet 0)
+13: 
+13: === Testbed 12: BESTANDEN ===
+1/8 Test #13: Testbed12_Tool ...................   Passed    0.01 sec
+test 14
+    Start 14: Testbed13_ApexOneShot
+
+14: Test command: D:\Nova_Recycling_Bundle_2026-08-24\_global_results\nova4_sandbox\build\Release\testbed13.exe
+14: Working Directory: D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build
+14: Test timeout computed to be: 45
+14: === Testbed 13: Apex One-Shot + 3B-Batch ===
+14:   Template gerendert     = ja
+14:   Apex-Status            = complete
+14:   ReAct-History-Eintr├ñge = 2
+14:   3B geladen (RAM)       = ja (4096 Bytes)
+14:   3B-Batch-Ausgaben      = 2
+14: 
+14: === Testbed 13: BESTANDEN ===
+2/8 Test #14: Testbed13_ApexOneShot ............   Passed    0.01 sec
+test 15
+    Start 15: Testbed14_ApexReact
+
+15: Test command: D:\Nova_Recycling_Bundle_2026-08-24\_global_results\nova4_sandbox\build\Release\testbed14.exe
+15: Working Directory: D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build
+15: Test timeout computed to be: 45
+15: === Testbed 14: Apex ReAct-Loop ===
+15:   Status                 = complete
+15:   Iterationen            = 4
+15:   History-Eintr├ñge       = 11
+15:   shell_exec-Best├ñtigung = 1 (erwartet >=1)
+15:   THOUGHT->ACTION->OBS    = verkettet
+15:   Task-JSON reload       = ok (11 Eintr├ñge)
+15: 
+15: === Testbed 14: BESTANDEN ===
+3/8 Test #15: Testbed14_ApexReact ..............   Passed    0.05 sec
+test 16
+    Start 16: BlockE_Skills
+
+16: Test command: D:\Nova_Recycling_Bundle_2026-08-24\_global_results\nova4_sandbox\build\Release\test_blocke_skills.exe
+16: Working Directory: D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build
+16: Test timeout computed to be: 45
+16: === Block E: Skills + Apex Logik ===
+16:   [OK] NanoParser: Apex-Trigger coding
+16:   [OK] NanoParser: Tool-Hint wetter
+16:   [OK] NanoParser: Komplexit├ñts-Signal
+16:   [OK] NanoParser: Todo/Pr├ñferenz-Signal
+16:   [OK] Guard: relativer Pfad erlaubt
+16:   [OK] Guard: ../../etc/passwd blockiert
+16:   [OK] Guard: Windows-Traversal blockiert
+16:   [OK] Guard: absoluter Au├ƒen-Pfad blockiert
+16:   [OK] SkillLoader: YAML geparst
+16:   [OK] SkillLoader: Felder korrekt
+16:   [OK] SkillLoader: Inline-Liste
+16:   [OK] SkillLoader: Parameter-Block
+16:   [OK] SkillLoader: Apex-Skill geparst
+16:   [OK] Registry: Standard-Skills geladen
+16:   [OK] Permission: Tier 1 nie best├ñtigen
+16:   [OK] Permission: Tier 2 bei Flag
+16:   [OK] Permission: Tier 2 ohne Flag
+16:   [OK] Permission: Tier 3 immer
+16:   [OK] Permission: datei_loeschen Pflicht
+16:   [OK] Profil: research aktiviert
+16:   [OK] Profil: filtert aktive Skills
+16:   [OK] rechner: 2+3*4 = 14
+16:   [OK] rechner: (2+3)*4 = 20
+16:   [OK] rechner: ung├╝ltig erkannt
+16:   [OK] datei_schreiben ok
+16:   [OK] datei_lesen liefert Inhalt
+16:   [OK] Tool: Traversal blockiert (WorkspaceBoundaryError)
+16:   [OK] todo schreiben/lesen
+16:   [OK] wetter via http_get-Stub
+16:   [OK] render_template
+16:   [OK] parse_step: tool_call
+16:   [OK] parse_step: task_complete
+16:   [OK] parse_step: replan
+16:   [OK] parse_reflexion
+16:   [OK] Task: JSON deserialisiert
+16:   [OK] Task: round-trip korrekt
+16:   [OK] Result: klein -> unver├ñndert
+16:   [OK] Result: gro├ƒ -> 14B-Zusammenfassung
+16:   [OK] REPLAN: nach 3 Fehlschl├ñgen ausgel├Âst
+16:   [OK] REPLAN: max 2 begrenzt
+16:   [OK] REPLAN: nach max_replans blockiert
+16: 
+16: === Block E Logik: BESTANDEN (0 Fehler) ===
+4/8 Test #16: BlockE_Skills ....................   Passed    0.01 sec
+test 17
+    Start 17: AppPipeline
+
+17: Test command: D:\Nova_Recycling_Bundle_2026-08-24\_global_results\nova4_sandbox\build\Release\test_app_pipeline.exe
+17: Working Directory: D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build
+17: Test timeout computed to be: 45
+17: === App-Pipeline: nova4.exe End-to-End (Mock) ===
+17:   Server: 127.0.0.1:50760
+17:   T1 erstes Token 0.1 ms | text_frames=10 | tool=1 | done=ja
+17:   T1 Chat: {"type":"text","text":"Ich "}{"type":"text","text":"rechne "}{"type":"text","text":"das "}{"type":"text","text":"kurz "}{"type":"text","text":"aus"}{"type":"text","text":": "}{"type":"text","text":"2+3*4 = 14"}{"type":"text","text":" ÔÇö "}{"type":"text","text":"fertig"}{"type":"text","text":"."}
+17:   T2 text_frames=15 | tool=0 | done=ja
+17: 
+17: === App-Pipeline: BESTANDEN ===
+5/8 Test #17: AppPipeline ......................   Passed    0.01 sec
+test 19
+    Start 19: Testbed15_Grammar
+
+19: Test command: D:\Nova_Recycling_Bundle_2026-08-24\_global_results\nova4_sandbox\build\Release\testbed15.exe
+19: Working Directory: D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build
+19: Test timeout computed to be: 45
+19: === Testbed 15: Schema-Zwang (constrained decoding) ===
+19:   Registry-Tools: 19
+19:   [0] <tool_call name="codebase_scan"/> -> kind=1 tool=codebase_scan
+19:   [1] <tool_call name="finanzen"/> -> kind=1 tool=finanzen
+19:   [2] <tool_call name="uhrzeit"/> -> kind=1 tool=uhrzeit
+19:   [3] <tool_call name="codebase_scan"/> -> kind=1 tool=codebase_scan
+19:   G├╝ltige Ausgaben         = 50/50
+19:   davon Tool-Calls         = 45
+19:   erfundene Tool-Namen     = 0 (erwartet 0)
+19:   Adversarial-Ausgabe      = <tool_call name="codebase_scan"/> (kind=1, tool=codebase_scan)
+19:   Reflexion-JSON: {"fortschritt_prozent": 50, "was_funktioniert": "ok", "was_fehlt": "ok", "strategie_anpassen": true, "naechster_fokus": "ok", "extrahierte_fakten": ["fakt"]}
+19:   Reflexion g├╝ltig         = 5/5
+19: 
+19: === Testbed 15: BESTANDEN ===
+6/8 Test #19: Testbed15_Grammar ................   Passed    0.01 sec
+test 20
+    Start 20: Testbed16_SubagentCtx
+
+20: Test command: D:\Nova_Recycling_Bundle_2026-08-24\_global_results\nova4_sandbox\build\Release\testbed16.exe
+20: Working Directory: D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build
+20: Test timeout computed to be: 45
+20: === Testbed 16: 3B-Subagent kontextfrei ===
+20:   Kontrakt-Prompt: {"tool":"wetter","params":{"location":"Hamburg","units":"metric"}}
+20:   Leaky-Prompt abgelehnt   = ja
+20:   Resident-Gewichte        = 1024 Bytes (loaded=ja)
+20:   Batch-Ergebnisse         = [ergebnis:rechner, ergebnis:uhrzeit]
+20:   Kein Kontext-Leakage     = ja
+20: 
+20: === Testbed 16: BESTANDEN ===
+7/8 Test #20: Testbed16_SubagentCtx ............   Passed    0.01 sec
+test 21
+    Start 21: Testbed17_PlanDag
+
+21: Test command: D:\Nova_Recycling_Bundle_2026-08-24\_global_results\nova4_sandbox\build\Release\testbed17.exe
+21: Working Directory: D:/Nova_Recycling_Bundle_2026-08-24/_global_results/nova4_sandbox/build
+21: Test timeout computed to be: 45
+21: === Testbed 17: Plan-Phase + DAG-Dispatch ===
+21:   Plan geparst: ok=ja, steps=3
+21:     s1: tool=slow deps=0
+21:     s2: tool=slow deps=0
+21:     s3: tool=rechner deps=2
+21:   Dispatch ok=ja | Wellen=2 | Wall=66.5 ms
+21:     Welle 0: s1 s2 
+21:     Welle 1: s3 
+21:     s3-OBS = 20+22 = 42
+21: 
+21: === Testbed 17: BESTANDEN ===
+8/8 Test #21: Testbed17_PlanDag ................   Passed    0.08 sec
+
+The following tests passed:
+	Testbed12_Tool
+	Testbed13_ApexOneShot
+	Testbed14_ApexReact
+	BlockE_Skills
+	AppPipeline
+	Testbed15_Grammar
+	Testbed16_SubagentCtx
+	Testbed17_PlanDag
+
+100% tests passed, 0 tests failed out of 8
+
+Total Test time (real) =   0.21 sec
