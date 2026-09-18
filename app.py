@@ -1,2 +1,3 @@
 def value() -> int:
+    # return 1
     return 1
