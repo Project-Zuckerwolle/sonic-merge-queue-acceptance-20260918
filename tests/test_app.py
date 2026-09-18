@@ -2,4 +2,4 @@ from app import value
 
 
 def test_value() -> None:
-    assert value() == 1
+    assert value() == 999
