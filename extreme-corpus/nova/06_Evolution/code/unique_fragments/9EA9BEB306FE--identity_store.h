@@ -45,6 +45,7 @@ struct IdentityBlock {
 
 class IdentityStore {
 public:
+    // Leerer Pfad => %ProgramData%\Nova\memory\identity.md (Paths, D9: nie CWD-relativ).
     explicit IdentityStore(std::string path = {});
 
     // Muss vor dem ersten schreibenden Zugriff gesetzt werden. Jede Änderung an

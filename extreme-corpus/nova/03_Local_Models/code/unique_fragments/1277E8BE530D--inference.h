@@ -178,6 +178,7 @@ public:
     // Decoder-Zustand; für eine Suche über Tausende von Dokumenten reichte er
     // nicht — dafür gibt es BM25 im Brain. Die Trennung ist Absicht.
     //
+    // Leerer Vektor => die Engine hält keine Zustände (Mock). Der Aufrufer
     // muss diesen Fall behandeln und darf NICHT stillschweigend auf einen
     // schlechteren Vergleich ausweichen, ohne es zu melden.
     //
