@@ -47,7 +47,6 @@ public:
     bool read_chunk(const std::string& path, modelstore::Chunk& out, std::string* err = nullptr);
 
     // Liest alle Pfade, parst, validiert CRC, akkumuliert Bandbreite.
-    // Bei stop_on_bad_crc=true Abbruch beim ersten CRC-Fehler.
     StreamStats stream_and_validate(const std::vector<std::string>& paths,
                                     uint64_t* bad_crc_out,
                                     bool stop_on_bad_crc = false);

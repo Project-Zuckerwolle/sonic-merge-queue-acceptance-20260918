@@ -104,7 +104,6 @@ void block3_expand_scales(const Int3Matrix& W, std::vector<float>& out_scales);
 void fused_int3_gemv(const Int3Matrix& W, const float* x, float* y);
 
 // Batched Fused INT3-GEMM: Y[M×N] = dequant(W[M×K]) · X[K×N].
-// Layout X = [K][N] (X[k*N+n]), Y = [M][N] (Y[i*N+n]). Liest jede Gewichtszeile
 // EINMAL und wendet sie auf alle N Spalten an -> amortisiert den VRAM-Read über N
 // Positionen. Basis für Spec-Decoding-Verify (24B prüft N Draft-Tokens in 1 Pass).
 void fused_int3_gemm(const Int3Matrix& W, const float* X, int N, float* Y);

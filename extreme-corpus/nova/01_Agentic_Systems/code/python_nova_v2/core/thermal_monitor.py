@@ -122,7 +122,7 @@ class ThermalMonitor:
     def ist_warm(self) -> bool:
         """True wenn Temperatur im Warn-Bereich ODER kritisch.
         Beide Flags können gleichzeitig True sein.
-        """ 
+        """
         r = self._letztes
         if r.gpu_temp_c and r.gpu_temp_c >= self._grenzen.gpu_warn_c:
             return True
