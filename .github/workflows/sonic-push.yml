@@ -2,6 +2,8 @@ name: Sonic Push
 
 on:
   push:
+    branches-ignore:
+      - gh-readonly-queue/**
 
 permissions:
   contents: write
