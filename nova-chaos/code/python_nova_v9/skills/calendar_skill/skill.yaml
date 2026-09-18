@@ -1,0 +1,14 @@
+name: Kalender
+version: "1.0"
+beschreibung: "Termine erkennen, speichern und abrufen"
+hooks:
+  - name: on_message
+    threshold: 0.74
+    beispiele:
+      - "Ich habe morgen ein Meeting um 14 Uhr"
+      - "Termin: Arzt am Freitag 10:00 Uhr"
+      - "Was steht diese Woche an?"
+      - "Zeig mir meine Termine"
+      - "Trage ein: Zahnarzt am 15. Mai"
+      - "Welche Meetings habe ich nächste Woche?"
+      - "Erinnere mich an den Geburtstag von Anna"

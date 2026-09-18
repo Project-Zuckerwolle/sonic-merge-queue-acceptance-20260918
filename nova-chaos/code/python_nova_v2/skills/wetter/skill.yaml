@@ -1,0 +1,24 @@
+name: wetter
+beschreibung: "Aktuelles Wetter und Vorhersage via Open-Meteo (kostenlos, kein API-Key)"
+version: "1.0"
+
+hooks:
+  - name: on_message
+    threshold: 0.72
+    beispiele:
+      - "Wie ist das Wetter heute?"
+      - "Wetter in Berlin"
+      - "Wird es morgen regnen?"
+      - "Temperatur heute"
+      - "Wettervorhersage für die Woche"
+      - "Wetter draußen"
+      - "Regnet es heute?"
+      - "Wie warm wird es heute?"
+      - "Wetteraussichten"
+      - "Forecast"
+
+config_defaults:
+  standard_stadt: "Berlin"
+  standard_land: "DE"
+  einheit: "celsius"          # celsius | fahrenheit
+  tage: 3                     # 1-7 Tage Vorhersage

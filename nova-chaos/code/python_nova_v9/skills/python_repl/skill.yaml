@@ -1,0 +1,16 @@
+name: PythonREPL
+version: "1.0"
+beschreibung: "Persistenter Python-REPL mit State zwischen Aufrufen"
+hooks:
+  - name: on_message
+    threshold: 0.74
+    beispiele:
+      - "Python REPL: x = 42"
+      - "Setze x = 100 und berechne x * 2"
+      - "Definiere eine Funktion und ruf sie auf"
+      - "REPL: importiere pandas und lade eine CSV"
+      - "Führe Python aus und behalte den State"
+      - "Berechne weiter: addiere 50 zu x"
+config_defaults:
+  timeout: 30
+  max_history: 50

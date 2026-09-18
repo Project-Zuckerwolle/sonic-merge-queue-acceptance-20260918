@@ -1,0 +1,37 @@
+name: news
+beschreibung: "Aktuelle Nachrichten aus mehreren Quellen (RSS-Feeds, kein API-Key)"
+version: "1.0"
+
+hooks:
+  - name: on_message
+    threshold: 0.78
+    beispiele:
+      - "Was gibt es Neues?"
+      - "Aktuelle Nachrichten"
+      - "News heute"
+      - "Was ist passiert?"
+      - "Tech News"
+      - "Technologie Neuigkeiten"
+      - "Wirtschaftsnews"
+      - "Schlagzeilen"
+      - "Neuigkeiten"
+      - "Was läuft gerade in der Welt?"
+      - "Internationale News"
+      - "Deutschland Nachrichten"
+
+config_defaults:
+  max_artikel: 5          # Artikel pro Quelle
+  quellen:
+    - name: "Tagesschau"
+      url: "https://www.tagesschau.de/xml/rss2"
+      kategorie: "allgemein"
+    - name: "Heise"
+      url: "https://www.heise.de/rss/heise.rdf"
+      kategorie: "tech"
+    - name: "Spiegel"
+      url: "https://www.spiegel.de/schlagzeilen/index.rss"
+      kategorie: "allgemein"
+    - name: "Golem"
+      url: "https://rss.golem.de/rss.php?feed=RSS2.0"
+      kategorie: "tech"
+  standard_kategorien: ["allgemein"]   # welche Kategorien default angezeigt

@@ -1,0 +1,28 @@
+name: websearch
+beschreibung: "Websuche via SearXNG (lokal) mit DuckDuckGo-Fallback — kein API-Key"
+version: "2.0"
+
+hooks:
+  - name: on_message
+    threshold: 0.72
+    beispiele:
+      - "Suche nach Python asyncio Tutorial"
+      - "Was ist LangChain?"
+      - "Neueste Entwicklungen in der KI"
+      - "Wie funktioniert Quantencomputing?"
+      - "Wer hat das erfunden?"
+      - "Aktuelles zu GPT-5"
+      - "Recherchiere für mich"
+      - "Finde Informationen über"
+      - "Was sind die besten Alternativen zu"
+      - "Google mal"
+      - "Suche online nach"
+      - "Was weiß das Internet über"
+      - "Welches Mainboard empfiehlst du"
+      - "Teste und vergleiche"
+
+config_defaults:
+  max_ergebnisse: 8           # Anzahl Treffer von SearXNG
+  fetch_seiten: 3             # Top-N Seiten parallel laden
+  max_zeichen_pro_seite: 1500 # Extrahierter Seiten-Inhalt pro Treffer
+  sprache: "de"               # de | en | auto

@@ -1,0 +1,34 @@
+name: finanzen
+beschreibung: "Aktien, Krypto, Wechselkurse und Indizes via Yahoo Finance & CoinGecko"
+version: "1.0"
+
+hooks:
+  - name: on_message
+    threshold: 0.74
+    beispiele:
+      - "Bitcoin Kurs"
+      - "Wie steht der DAX?"
+      - "Apple Aktie"
+      - "EUR USD Kurs"
+      - "Ethereum Preis"
+      - "Tesla Aktienkurs"
+      - "S&P 500"
+      - "Wechselkurs Dollar"
+      - "Kryptowährungen"
+      - "Börsenkurs"
+      - "NVIDIA Aktie heute"
+      - "Gold Preis"
+
+config_defaults:
+  standard_symbole:
+    - "^GDAXI"     # DAX
+    - "^DJI"       # Dow Jones
+    - "BTC-EUR"    # Bitcoin in EUR
+  krypto_ids:
+    - "bitcoin"
+    - "ethereum"
+  waehrungen:
+    - "USD"
+    - "GBP"
+    - "CHF"
+  basis_waehrung: "EUR"

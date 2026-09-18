@@ -1,0 +1,16 @@
+name: DateiZugriff
+version: "2.0"
+beschreibung: "Workspace-Dateien lesen und auflisten"
+hooks:
+  - name: on_message
+    threshold: 0.74
+    beispiele:
+      - "Zeig mir die Dateien im Workspace"
+      - "Lies die Datei main.py"
+      - "Was steht in config.yaml?"
+      - "Liste alle Python-Dateien auf"
+      - "Öffne die Datei README.md"
+      - "Was ist der Inhalt von requirements.txt?"
+config_defaults:
+  workspace_pfad: "./workspace"
+  max_dateigroesse_kb: 100
